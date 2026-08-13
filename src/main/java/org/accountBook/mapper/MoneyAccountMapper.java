@@ -1,4 +1,4 @@
 package org.accountBook.mapper;
 
-public class moneyAccountMapper {
+public class MoneyAccountMapper {
 }
