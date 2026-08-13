@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Category {
-    Long user_id;
-    String type;
-    String name;
-    Long sore_order;
+    private Long user_id;
+    private String type;
+    private String name;
+    private Long sore_order;
 }

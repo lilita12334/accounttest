@@ -1,5 +1,6 @@
 package org.accountBook.service.Impl;
 
+import org.accountBook.dto.Account;
 import org.accountBook.dto.Category;
 import org.accountBook.mapper.MoneyAccountMapper;
 import org.accountBook.service.MoneyAccountService;
@@ -15,5 +16,11 @@ public class MoneyAccountServiceImpl implements MoneyAccountService {
     @Override
     public void addAccountType(Category category){
         moneyAccountMapper.addTypeName(category);
+    }
+
+
+    @Override
+    public void addAccount(Account account){
+        moneyAccountMapper.addAccount(account);
     }
 }

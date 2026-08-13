@@ -1,6 +1,7 @@
 package org.accountBook.controller;
 
 import org.accountBook.common.ApiResponse;
+import org.accountBook.dto.Account;
 import org.accountBook.dto.Category;
 import org.accountBook.service.MoneyAccountService;
 import org.accountBook.utils.JwtUtil;
@@ -27,6 +28,11 @@ public class MoneyAccountController {
     }
     //增加记账记录
 
+    @PostMapping("/addAccount")
+    public ApiResponse<Map<String,Object>> AddAcount(@RequestBody Account account ){
+        moneyAccountService.addAccount(account);
+        return ApiResponse.success(null);
+    }
     //删除记账分类
 
     //删除记账记录
