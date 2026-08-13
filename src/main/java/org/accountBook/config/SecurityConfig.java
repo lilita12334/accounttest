@@ -19,13 +19,13 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//
-//    private final JwtFilter jwtFilter;
-//
-//    // 使用 @Lazy 延迟加载 JwtFilter，打破循环依赖
-//    public SecurityConfig(@Lazy JwtFilter jwtFilter) {
-//        this.jwtFilter = jwtFilter;
-//    }
+
+    private final JwtFilter jwtFilter;
+
+    // 使用 @Lazy 延迟加载 JwtFilter，打破循环依赖
+    public SecurityConfig(@Lazy JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -44,8 +44,8 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/webjars/**").permitAll()
                         // 其他所有接口都需要认证（携带token）
                         .anyRequest().authenticated()
-                );
-//                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                )
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

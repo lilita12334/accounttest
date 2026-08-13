@@ -3,6 +3,7 @@ package org.accountBook.controller;
 import org.accountBook.common.ApiResponse;
 import org.accountBook.dto.Category;
 import org.accountBook.service.MoneyAccountService;
+import org.accountBook.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +14,13 @@ import java.util.Map;
 public class MoneyAccountController {
 
     @Autowired
+    JwtUtil jwtUtil;
+    @Autowired
     MoneyAccountService moneyAccountService;
     //增加记账分类
     @PostMapping("/addtype")
     public ApiResponse<Map<String,Object>> addAccountType(@RequestBody Category category){
+        category.setUser_id(jwtUtil.getCurrentUserId());
         moneyAccountService.addAccountType(category);
 
         return ApiResponse.success(null);

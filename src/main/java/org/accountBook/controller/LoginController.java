@@ -37,7 +37,7 @@ public class LoginController {
                 "id", u.getId(),
                 "username", u.getUsername()
         ));
-            return ApiResponse.success(null);
+            return ApiResponse.success(response);
         }
 
                 //有空补个token
