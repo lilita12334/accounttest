@@ -8,7 +8,7 @@
             id,
             username
         from user
-        where username=#{ussername} and password=#{password}
+        where username=#{username} and password=#{password}
     </select>
 
 </mapper>

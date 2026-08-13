@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // 只有登录注册接口允许匿名访问
                         .requestMatchers("/api/auth/**").permitAll()
-                        // 登录接口允许匿名访问
+                        // 登录接口允许匿名访问（后端实际路径是 /login/user，/api 前缀已被 Vite 代理去掉）
                         .requestMatchers("/login/**").permitAll()
                         // 举报原因接口允许访问
                         .requestMatchers("/api/reports/reasons").permitAll()
