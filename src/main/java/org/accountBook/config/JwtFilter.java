@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.accountBook.common.UserContext;
 import org.accountBook.utils.JwtUtil;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,6 +45,12 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 // 验证 token 并获取用户名
                 String username = jwtUtil.getUsernameFromToken(token);
+
+                // 2. 新增：从 JWT 中解析出 userId（Long类型）
+                Long userId = jwtUtil.getUserIdFromToken(token);
+
+                // 3. 新增：把 userId 存进 UserContext（供业务代码随时取用）
+                UserContext.setUserId(userId);
 
                 // 创建简单的用户详情对象
                 UserDetails userDetails = new User(

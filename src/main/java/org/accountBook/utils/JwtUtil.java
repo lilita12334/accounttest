@@ -108,10 +108,10 @@ public class JwtUtil {
         return claims.get("userId", Long.class);
     }
 
-    // 新增的，Controller 用 —— 这是给业务代码调的
-    public Long getCurrentUserId() {
-        return (Long) SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getPrincipal();
-    }
+//    // 新增的，Controller 用 —— 这是给业务代码调的
+//    public Long getCurrentUserId() {
+//        return (Long) SecurityContextHolder.getContext()
+//                .getAuthentication()
+//                .getPrincipal();
+//    }
 }

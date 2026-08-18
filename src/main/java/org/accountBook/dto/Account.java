@@ -1,8 +1,10 @@
 package org.accountBook.dto;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Data
 public class Account {
     private Long user_id;
     private Long category_id;

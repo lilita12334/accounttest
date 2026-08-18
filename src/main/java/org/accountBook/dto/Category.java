@@ -4,8 +4,13 @@ import lombok.Data;
 
 @Data
 public class Category {
+
+    private Long id;
     private Long user_id;
+    //支出类型
     private String type;
+    //名称
     private String name;
-    private Long sore_order;
+    //权重
+    private Long sort_order;
 }
