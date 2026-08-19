@@ -14,9 +14,13 @@ public interface MoneyAccountMapper {
     void addAccount(Account account);
 
     List<Category> getCategory(Long id);
+    List<Account> getAccount(Long id);
 
     //为了避免删除已有记录的分类的统计函数
     int countTypeByCaId(Long id);
+
+    int deleteById(@Param("id") Long Id,
+                             @Param("userid")Long userid);
 
     int deleteType(@Param("id") Long id,
                     @Param("userid") Long userid);

@@ -11,5 +11,9 @@ public interface MoneyAccountService {
 
      void deleteType(Long id,Long userid);
 
+     void deleteAccount(Long id);
+
      List<Category> getCategory(Long id);
+
+     List<Account> getAccount();
 }

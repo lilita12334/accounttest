@@ -38,6 +38,15 @@ List<Category> type=moneyAccountService.getCategory(userId);
         return ApiResponse.success(type);
 
     }
+
+    //获取记账
+    @GetMapping("/getAccount")
+    public ApiResponse<List<Account>> getAccount(){
+
+
+        List<Account> list= moneyAccountService.getAccount();
+        return ApiResponse.success(list);
+    }
     //增加记账记录
 
     @PostMapping("/addAccount")
@@ -56,8 +65,8 @@ List<Category> type=moneyAccountService.getCategory(userId);
 
     //删除记账记录
     @DeleteMapping("/deaccount")
-    public ApiResponse<Map<String,Object>> deleteAccount(){
-
+    public ApiResponse<Map<String,Object>> deleteAccount( Long accountId){
+        moneyAccountService.deleteAccount(accountId);
         return ApiResponse.success(null);
     }
 

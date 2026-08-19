@@ -1,6 +1,7 @@
 package org.accountBook.service.Impl;
 
 import org.accountBook.common.BusinessException;
+import org.accountBook.common.UserContext;
 import org.accountBook.dto.Account;
 import org.accountBook.dto.Category;
 import org.accountBook.mapper.MoneyAccountMapper;
@@ -45,6 +46,16 @@ public class MoneyAccountServiceImpl implements MoneyAccountService {
     }
 
     @Override
+    public List<Account> getAccount()
+    {
+        Long userId=UserContext.getCurrentUserId();
+        List<Account> accounts=moneyAccountMapper.getAccount(userId);
+        if(accounts==null||accounts.isEmpty()){
+            throw new BusinessException("暂无记账记录");
+        }
+        return  accounts;
+    }
+    @Override
     public void addAccount(Account account){
         moneyAccountMapper.addAccount(account);
     }
@@ -58,5 +69,15 @@ public class MoneyAccountServiceImpl implements MoneyAccountService {
         int row= moneyAccountMapper.deleteType(id, userid);
     if(row==0){throw new BusinessException("删除失败，该分类不存在或不属于您");
     }
+    }
+
+    @Override
+    public void deleteAccount(Long Id){
+
+
+        int rows=moneyAccountMapper.deleteById(Id,UserContext.getCurrentUserId());
+        if(rows==0){
+            throw new BusinessException("删除失败");
+        }
     }
 }
